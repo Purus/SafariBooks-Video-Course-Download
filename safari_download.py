@@ -41,7 +41,7 @@ for lesson in lessons:
         os.makedirs(output_folder + '/' + module_name)
         for index, video in enumerate(lesson.ol.find_all('a')):
             video_name = str(index+1) + ' - ' + video.text
-            video_name = video_name.replace("?","").replace(":","").encode('utf8', 'replace')            
+            video_name = video_name.replace("?","").replace(":","").replace('"',"").encode('utf8', 'replace')            
             video_url = domain + video.get('href')
             video_out = output_folder + '/' + module_name + '/' + video_name + '.mp4'
             cmd = "youtube-dl -u {} -p {} {} -g".format(username, password, video_url)
@@ -55,7 +55,7 @@ for lesson in lessons:
         os.makedirs(output_folder + '/' + module_name + '/' + lesson_name)
         for index, video in enumerate(lesson.ol.find_all('a')):
             video_name = str(index+1) + ' - ' + video.text
-            video_name = video_name.replace("?","").replace(":","").encode('utf8', 'replace')            
+            video_name = video_name.replace("?","").replace(":","").replace('"',"").encode('utf8', 'replace')            
             video_url = domain + video.get('href')
             video_out = output_folder + '/' + module_name + '/' + lesson_name + '/' + video_name + '.mp4'
             cmd = "youtube-dl -u {} -p {} {} -g".format(username, password, video_url)
